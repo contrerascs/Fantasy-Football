@@ -3,7 +3,7 @@ import pandas as pd
 def clean_data():
     # Lista para almacenar los DataFrames
     qb_dataframes = []
-    for week in range(1,18):
+    for week in range(1,19):
         input_file = f'data/data_csv/qb_fantasy_week_{week}.csv'
         df = pd.read_csv(input_file,skiprows=1)
         df['Week'] = f'{week}'

@@ -9,7 +9,7 @@ def render_sidebar(df):
         week_list = sorted(df["Week"].unique().tolist(), reverse=True)
         
         # Selección de temporada primero
-        selected_season = st.selectbox('Select a season', week_list, key='season')
+        selected_season = st.selectbox('Select a week of the season 2024', week_list, key='season')
         
         # Filtrar el dataframe por la temporada seleccionada
         season_df = df[df["Week"] == selected_season]

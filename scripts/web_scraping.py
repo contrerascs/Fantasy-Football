@@ -42,7 +42,7 @@ service = Service(executable_path=path)
 driver = webdriver.Chrome(service=service)
 
 try:
-    for week in range(1, 18):
+    for week in range(18, 19):
         get_qb_stats(driver, week)
         time.sleep(3)  # Espera entre peticiones para evitar bloqueos del sitio
 
