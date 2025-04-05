@@ -13,8 +13,11 @@ def clean_data():
     # Unir todos los DataFrames en uno solo
     qb_complete = pd.concat(qb_dataframes, ignore_index=True)
 
-    # Convertir columnas numéricas
-    qb_complete = qb_complete.apply(pd.to_numeric, errors='ignore')
+    qb_complete = qb_complete.drop(columns={'TD.3'})
+
+    # Renombrar columnas
+    qb_complete = qb_complete.rename(columns={'Att.1': 'Rush_Att', 'Yds.1': 'Rush_Yds', 'TD.1': 'Rush_TD', '2Pt.1':'Rush_2Pt',
+                            'Yds.2': 'Rec_Yds', 'TD.2': 'Rec_TD', '2Pt.2': 'Rec_2Pt',})
 
     # Guardar el DataFrame consolidado en un nuevo archivo CSV
     qb_complete.to_csv('data/qb_fantasy_football.csv', index=False)
