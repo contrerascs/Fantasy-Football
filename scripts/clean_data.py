@@ -18,6 +18,13 @@ def clean_data():
     # Renombrar columnas
     qb_complete = qb_complete.rename(columns={'Att.1': 'Rush_Att', 'Yds.1': 'Rush_Yds', 'TD.1': 'Rush_TD', '2Pt.1':'Rush_2Pt',
                             'Yds.2': 'Rec_Yds', 'TD.2': 'Rec_TD', '2Pt.2': 'Rec_2Pt',})
+    
+    # Paso 1: Dividir la columna 'Player' como antes
+    qb_complete[['Player', 'Team']] = qb_complete['Player'].str.rsplit(n=1, expand=True)
+
+    # Paso 2: Mover 'Team' junto a 'Player' (si el DataFrame tiene más columnas)
+    posicion = qb_complete.columns.get_loc('Player') + 1  # Posición después de 'Player'
+    qb_complete.insert(posicion, 'Team', qb_complete.pop('Team'))  # Extrae 'Team' y la inserta en la posición deseada
 
     # Guardar el DataFrame consolidado en un nuevo archivo CSV
     qb_complete.to_csv('data/qb_fantasy_football.csv', index=False)

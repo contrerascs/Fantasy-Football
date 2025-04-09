@@ -46,4 +46,4 @@ def week_fantasy_points(week_data, selected_qb):
         with col:
             rank_in_stat(week_data,selected_qb,stat)
 
-    st.dataframe(week_data)
+    st.dataframe(week_data,hide_index=True)
