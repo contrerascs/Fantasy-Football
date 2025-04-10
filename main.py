@@ -12,6 +12,7 @@ st.set_page_config(
     initial_sidebar_state='expanded',
 )
 
+# Load dataset
 df = load_dataset()
 selected_qb, selected_week = render_sidebar(df)
 
