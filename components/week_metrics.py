@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+from components.week_plots import pts_week_plots
 
 def rank_in_stat(week_data,player,stat):
     player_data = week_data[week_data['Player'] == player]
@@ -45,5 +47,14 @@ def week_fantasy_points(week_data, selected_qb):
     for col, stat in zip(columns, stats):
         with col:
             rank_in_stat(week_data,selected_qb,stat)
+
+    # Mostrar en Streamlit
+    st.title("Fantasy points by quarterback (Pts*)")
+
+    # Filtrar y ordenar los 32 mejores jugadores
+    top_players = week_data.sort_values('Pts*', ascending=False).head(32)
+
+    # Gráfica con Streamlit (opción simple)
+    st.bar_chart(top_players.set_index('Player')['Pts*'],color='#1CB698')
 
     st.dataframe(week_data,hide_index=True)

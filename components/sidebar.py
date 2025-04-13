@@ -3,7 +3,7 @@ import streamlit as st
 def render_sidebar(df):
     # Renderiza la barra lateral completa.
     with st.sidebar:
-        st.image('assets/logo.png', use_container_width=True)
+        st.image('assets/logo_green.png', use_container_width=True)
 
         # Obtener lista de temporadas ordenadas (más recientes primero)
         week_list = sorted(df["Week"].unique().tolist(), reverse=True)
