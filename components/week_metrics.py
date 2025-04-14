@@ -38,7 +38,7 @@ def rank_in_stat(week_data,player,stat):
 
 def week_fantasy_points(week_data, selected_qb):
     week = week_data['Week'].iloc[0]
-    st.header(f'{selected_qb} fantasy points in Week {week}')
+    st.title(f'{selected_qb} fantasy points in Week {week}')
 
     # Mostrar estadísticas de la temporada
     stats = ['Pts*',"Att", "Cmp", "Yds", "TD", "Int"]
