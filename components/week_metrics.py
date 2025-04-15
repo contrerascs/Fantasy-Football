@@ -58,3 +58,12 @@ def week_fantasy_points(week_data, selected_qb):
     st.bar_chart(top_players.set_index('Player')['Pts*'],color='#1CB698')
 
     st.dataframe(week_data,hide_index=True)
+
+    # Mostrar en Streamlit
+    st.title("Percentaje complete pass by QB")
+
+    week_data = week_data[week_data['Att'] >= 10]
+
+    week_data['Cmp%'] = (week_data['Cmp'] / week_data['Att'])*100
+    df_sorted = week_data.sort_values(by='Cmp%', ascending=False).head(32)
+    st.bar_chart(df_sorted.set_index('Player')['Cmp%'],color='#1CB698')
