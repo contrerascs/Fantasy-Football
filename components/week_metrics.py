@@ -57,7 +57,9 @@ def week_fantasy_points(week_data, selected_qb):
     # Gráfica con Streamlit (opción simple)
     st.bar_chart(top_players.set_index('Player')['Pts*'],color='#1CB698')
 
-    st.dataframe(week_data,hide_index=True)
+    st.title("Top 5 Quarterbacks with most points")
+    top5 = week_data.sort_values(by='Pts*', ascending=False).head(5)
+    st.dataframe(top5[['Player', 'Pts*', 'TD', 'Rush_TD', 'Int', 'Yds']],hide_index=True)
 
     # Mostrar en Streamlit
     st.title("Percentaje complete pass by QB")
@@ -68,6 +70,6 @@ def week_fantasy_points(week_data, selected_qb):
     df_sorted = week_data.sort_values(by='Cmp%', ascending=False).head(32)
     st.bar_chart(df_sorted.set_index('Player')['Cmp%'],color='#1CB698')
 
-    top5 = week_data.sort_values(by='Pts*', ascending=False).head(5)
-    st.dataframe(top5[['Player', 'Pts*', 'TD', 'Rush_TD', 'Int', 'Yds']],hide_index=True)
+    st.title(f"All Quaterbacks stats in week {week}")
+    st.dataframe(week_data,hide_index=True)
 
