@@ -1,8 +1,4 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from components.week_plots import pts_week_plots
 
 def rank_in_stat(week_data,player,stat):
     player_data = week_data[week_data['Player'] == player]
