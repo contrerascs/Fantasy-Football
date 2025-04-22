@@ -58,7 +58,7 @@ def week_fantasy_points(week_data, selected_qb):
     st.dataframe(top5[['Player', 'Pts*', 'TD', 'Rush_TD', 'Int', 'Yds']],hide_index=True)
 
     # Mostrar en Streamlit
-    st.title("Percentaje complete pass by QB")
+    st.title("Percentage complete pass by QB")
 
     week_data = week_data[week_data['Att'] >= 10]
 
